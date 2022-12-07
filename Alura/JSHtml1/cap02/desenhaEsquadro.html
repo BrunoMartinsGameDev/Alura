@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esquadro 2.0</title>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        function desenhaEsquadro(cor, xa,ya,xc,yc){
+            pincel.fillStyle = cor;
+            pincel.beginPath();
+            pincel.moveTo(xa,ya);
+            pincel.lineTo(xa,yc);
+            pincel.lineTo(xc,yc);
+            pincel.fill();
+        }
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        desenhaEsquadro('blue',50,50,400,400);
+        desenhaEsquadro('pink',100,175,275,350);
+        
+        
+        
+    </script>
+</body>
+</html>

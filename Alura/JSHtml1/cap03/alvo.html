@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALVO</title>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    Escolha uma cor <input type="color" name="" id="">
+    <script>
+        var paleta = document.querySelector('input');
+        var tela = document.querySelector("canvas");
+        var pincel = tela.getContext('2d');
+        var xAlvo = 300; 
+        var yAlvo = 200; 
+        pincel.fillStyle ='lightgrey'; 
+        pincel.fillRect(0,0,600,400);
+        function desenhaAlvo(event){
+            pincel.fillStyle = 'black';
+            pincel.beginPath();
+            pincel.arc(xAlvo,yAlvo,30,0,2*3.14);
+            pincel.fill();
+            pincel.fillStyle = 'white';
+            pincel.beginPath();
+            pincel.arc(xAlvo,yAlvo,20,0,2*3.14);
+            pincel.fill();
+            pincel.fillStyle = 'black';
+            pincel.beginPath();
+            pincel.arc(xAlvo,yAlvo,10,0,2*3.14);
+            pincel.fill();
+        }
+        desenhaAlvo();
+        tela.onclick = function(event){
+            var x = event.pageX - tela.offsetLeft;
+            var y = event.pageY - tela.offsetTop;
+            if(x>=xAlvo-10 && x<=xAlvo+10 && y>=yAlvo-10 && y<yAlvo+10){
+                alert("UAU");
+            }
+        }
+</script>
+</body>
+</html>

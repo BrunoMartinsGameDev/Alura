@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveBola</title>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        var tela = document.querySelector("canvas");
+        var pincel = tela.getContext("2d");
+        var x = 300;
+        var y = 200;
+
+        //teclado
+        var esquerda = 37;
+        var cima = 38;
+        var direita = 39;
+        var baixo = 40;
+
+        var speed = 10;
+        pincel.fillStyle = "lightgray";
+        pincel.fillRect(0,0,600,400);
+        function desenhaCirculo(x,y,raio){
+            pincel.fillStyle = "blue";
+            pincel.beginPath();
+            pincel.arc(x,y,raio,0,2*Math.PI);
+            pincel.fill();
+        }
+        function limpaTela(){
+            pincel.clearRect(0,0,600,400)
+        }
+        function atualizaTela(){
+            limpaTela();
+            desenhaCirculo(x,y,10);            
+        }
+        setInterval(atualizaTela,1);
+        function leDoTeclado(evento){
+            // console.log(evento);
+            switch(evento.keyCode){
+                case cima:
+                    y-=speed;
+                    break;
+                case baixo:
+                    y+=speed;
+                    break;
+                case esquerda:
+                    x-=speed;
+                    break;
+                case direita:
+                    x+=speed;
+                    break;
+            }
+        }
+        document.onkeydown = leDoTeclado;
+
+    </script>
+</body>
+</html>
